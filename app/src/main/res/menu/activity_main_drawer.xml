@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group >
+    <item android:title="Home"
+        android:icon="@drawable/ic_home"
+        android:id="@+id/home_Page">
+    </item>
+    </group>
+    <group>
+        <item
+            android:id="@+id/notice_board"
+            android:icon="@drawable/ic_notice"
+            android:title="Notice Board">
+        </item>
+    </group>
+    <group>
+        <item
+            android:id="@+id/interior"
+            android:title="Interior 2017-18"
+            android:icon="@drawable/ic_information">
+        </item>
+    </group>
+    <group>
+        <item
+            android:id="@+id/result"
+            android:title="Results"
+            android:icon="@drawable/ic_result"></item>
+    </group>
+    <group>
+        <item
+            android:id="@+id/job"
+            android:title="Jobs"
+            android:icon="@drawable/ic_job"></item>
+</group>
+    <group>
+    <item android:title="Contact Us"
+        android:id="@+id/contact_us"
+        android:icon="@drawable/ic_contact_us">
+    </item>
+    </group>
+
+
+</menu>
