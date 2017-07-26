@@ -15,12 +15,10 @@
         card_view:cardPreventCornerOverlap="true"
         card_view:contentPaddingBottom="20dp"
         card_view:cardElevation="2dp"
-        card_view:cardBackgroundColor="@color/cardview_light_background"
-
        >
 
         <RelativeLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="fill_parent">
 
             <TextView
