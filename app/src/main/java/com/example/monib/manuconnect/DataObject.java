@@ -9,6 +9,7 @@ public class DataObject {
         Id = id;
     }
 
+   
     private int Id;
     private String Title;
     private String Desciption;
@@ -20,8 +21,15 @@ public class DataObject {
     public DataObject(int id,String title, String desciption) {
         Id=id;
         Title = title;
-
         Desciption = desciption;
+    }
+     
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
     }
 
     public String getTitle() {
