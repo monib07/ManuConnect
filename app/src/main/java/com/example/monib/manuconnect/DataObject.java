@@ -24,13 +24,7 @@ public class DataObject {
         Desciption = desciption;
     }
      
-    public int getId() {
-        return Id;
-    }
 
-    public void setId(int id) {
-        Id = id;
-    }
 
     public String getTitle() {
         return Title;
