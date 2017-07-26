@@ -185,7 +185,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.job) {
             Toast.makeText(getApplicationContext(), "Job Selected", Toast.LENGTH_LONG).show();
         } else if (id == R.id.home_Page) {
-            Toast.makeText(getApplicationContext(), "Home Page Selected", Toast.LENGTH_LONG).show();
+            Intent i=new Intent(this,MainActivity.class);
+            startActivity(i);
+            //Toast.makeText(getApplicationContext(), "Home Page Selected", Toast.LENGTH_LONG).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
