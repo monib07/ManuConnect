@@ -1,27 +1,22 @@
 package com.example.monib.manuconnect;
 
+
 public class DataObject {
-    public int getId() {
-        return Id;
-    }
 
-    public void setId(int id) {
-        Id = id;
-    }
-
-   
     private int Id;
     private String Title;
     private String Desciption;
+    private  String Date;
 
 
     public DataObject() {
     }
 
-    public DataObject(int id,String title, String desciption) {
+    public DataObject(int id,String title, String desciption,String date) {
         Id=id;
         Title = title;
         Desciption = desciption;
+        Date=date;
     }
      
 
@@ -40,5 +35,13 @@ public class DataObject {
 
     public void setDesciption(String desciption) {
         Desciption = desciption;
+    }
+
+    public String  getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
     }
 }
