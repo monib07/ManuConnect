@@ -7,6 +7,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import java.util.*;
 import com.example.monib.manuconnect.R;
@@ -41,6 +42,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHoldder> {
         DataObject dataObject=list.get(position);
         holder.title.setText(dataObject.getTitle());
         holder.desc.setText(dataObject.getDesciption());
+        holder.date.setText("Published Date: "+dataObject.getDate());
 
     }
 
@@ -53,11 +55,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHoldder> {
     public class ViewHoldder extends RecyclerView.ViewHolder{
         public TextView title;
         public TextView desc;
+        public TextView date;
 
         public ViewHoldder(View itemView) {
             super(itemView);
             title=(TextView)itemView.findViewById(R.id.textView1);
             desc=(TextView)itemView.findViewById(R.id.textView2);
+            date=(TextView)itemView.findViewById(R.id.textView3);
+
 
         }
     }
