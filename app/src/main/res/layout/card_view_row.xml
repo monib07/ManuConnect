@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:lineSpacingExtra="2dp"
+                android:onClick="Description"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
                 android:textAlignment="gravity"
@@ -44,6 +45,7 @@
                 android:lineSpacingExtra="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
+                android:onClick="Description"
                 android:textAlignment="gravity"
                 android:textColor="#71767f" />
 
