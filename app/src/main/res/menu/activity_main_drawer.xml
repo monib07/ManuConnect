@@ -40,5 +40,13 @@
     </item>
     </group>
 
+    <group>
+        <item android:title="Website"
+            android:id="@+id/web"
+            android:icon="@drawable/ic_action_web"
+          >
+        </item>
+    </group>
+
 
 </menu>
