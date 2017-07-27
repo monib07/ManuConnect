@@ -1,8 +1,11 @@
 package com.example.monib.manuconnect;
 
 
+import static android.R.attr.id;
+
 public class DataObject {
 
+    public int getId;
     private int Id;
     private String Title;
     private String Desciption;
@@ -43,5 +46,9 @@ public class DataObject {
 
     public void setDate(String date) {
         Date = date;
+    }
+
+    public int getId() {
+        return id;
     }
 }
