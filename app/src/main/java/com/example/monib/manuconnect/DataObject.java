@@ -21,7 +21,6 @@ public class DataObject {
         Desciption = desciption;
         Date=date;
     }
-     
 
 
     public String getTitle() {

@@ -3,8 +3,8 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
@@ -12,8 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:elevation="3dp"
+        card_view:cardCornerRadius="10dp"
         >
 
         <LinearLayout
@@ -26,34 +28,41 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:layout_alignParentTop="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="Title"
+                android:lineSpacingExtra="5dp"
                 android:onClick="Description"
-                android:layout_alignParentTop="true"
+                android:text="Title"
+                android:textColor="#000"
+                android:textSize="20dp"
                 android:textStyle="bold"/>
             <TextView
-                android:text="Desc"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:id="@+id/textView2"
-                android:onClick="Description"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_below="@+id/textView1"
-                android:layout_marginTop="5dp"/>
-            <TextView
-                android:text="27/7/2017"
-                android:textStyle="italic"
-                android:layout_marginBottom="15dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:lineSpacingExtra="5dp"
+                android:onClick="Description"
+                android:text="Desc" />
+
+            <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView2"
+                android:layout_gravity="end"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="27/7/2017"
+                android:textColor="@color/colorAccent"
                 android:textSize="8dp"
+                android:textStyle="italic"
                 />
 
 

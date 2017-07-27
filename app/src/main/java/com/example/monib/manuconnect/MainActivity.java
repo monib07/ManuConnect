@@ -1,26 +1,19 @@
 package com.example.monib.manuconnect;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.view.menu.MenuView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -34,22 +27,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.OkHttpClient;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String URL_Data = "http://shortinfo.info/saifulData/Manuu_Script.php?id=";
+    private static String LOG_TAG = "MainActivity";
     private List<DataObject> results;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private LinearLayoutManager linearLayoutManager;
     private RecyclerView.LayoutManager mLayoutManager;
-    private static String LOG_TAG = "MainActivity";
-    private static final String URL_Data="http://shortinfo.info/saifulData/Manuu_Script.php?id=";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,16 +50,16 @@ public class MainActivity extends AppCompatActivity
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
-        linearLayoutManager=new LinearLayoutManager(this);
+        linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        results=new ArrayList<>();
+        results = new ArrayList<>();
         loadData(0);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
 
-                if(linearLayoutManager.findLastCompletelyVisibleItemPosition() == results.size()-1){
-                    loadData(results.get(results.size()-1). getId());
+                if (linearLayoutManager.findLastCompletelyVisibleItemPosition() == results.size() - 1) {
+                    loadData(results.get(results.size() - 1).getId());
                 }
 
             }
@@ -83,33 +74,33 @@ public class MainActivity extends AppCompatActivity
 
 
     }
-    private void loadData(final int id)
-    {
-        final ProgressDialog progressDialog=new ProgressDialog(this);
+
+    private void loadData(final int id) {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Load Data");
         progressDialog.show();
-        StringRequest stringRequest=new StringRequest(Request.Method.GET,
-                URL_Data+id,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                URL_Data + id,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
-                        try{
+                        try {
                             progressDialog.dismiss();
-                            JSONObject parent =  new JSONObject(s);
+                            JSONObject parent = new JSONObject(s);
 
                             JSONArray NewsList = parent.getJSONArray("NewsList");
 
-                            for(int i=0;i<NewsList.length();i++)
-                            {
+                            for (int i = 0; i < NewsList.length(); i++) {
                                 JSONObject c = NewsList.getJSONObject(i);
-                                int id=c.getInt("ID");
-                                String title=c.getString("Title");
-                                String desc=c.getString("Description");
-                                DataObject dataObject=new DataObject(id,title,desc);
+                                int id = c.getInt("ID");
+                                String title = c.getString("Title");
+                                String desc = c.getString("Description");
+                                String date = c.getString("Date");
+                                DataObject dataObject = new DataObject(id, title, desc, date);
                                 results.add(dataObject);
 
                             }
-                            mAdapter=new MyAdapter(results,getApplicationContext());
+                            mAdapter = new MyAdapter(results, getApplicationContext());
                             mRecyclerView.setAdapter(mAdapter);
 
 
@@ -125,13 +116,11 @@ public class MainActivity extends AppCompatActivity
                     }
                 }
         );
-       RequestQueue requestQueue=Volley.newRequestQueue(this);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
 
-
     }
-
 
 
     @Override
@@ -185,7 +174,14 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.job) {
             Toast.makeText(getApplicationContext(), "Job Selected", Toast.LENGTH_LONG).show();
         } else if (id == R.id.home_Page) {
-            Toast.makeText(getApplicationContext(), "Home Page Selected", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "Home Page Selected", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
+        } else if (id == R.id.web) {
+            //Toast.makeText(getApplicationContext(), "Home Page Selected", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse("http://www.manuu.ac.in"));
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -193,10 +189,5 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
-
-
-
-}
 }
 
