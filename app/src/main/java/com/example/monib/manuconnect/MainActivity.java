@@ -1,6 +1,8 @@
 package com.example.monib.manuconnect;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -172,6 +174,11 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "Job Selected", Toast.LENGTH_LONG).show();
         } else if (id == R.id.home_Page) {
             Toast.makeText(getApplicationContext(), "Home Page Selected", Toast.LENGTH_LONG).show();
+        } else if (id == R.id.web) {
+            Intent i = new Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse("http://www.manuu.ac.in"));
+            startActivity(i);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
