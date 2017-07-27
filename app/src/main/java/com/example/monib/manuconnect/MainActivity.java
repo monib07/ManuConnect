@@ -173,7 +173,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.job) {
             Toast.makeText(getApplicationContext(), "Job Selected", Toast.LENGTH_LONG).show();
         } else if (id == R.id.home_Page) {
-            Toast.makeText(getApplicationContext(), "Home Page Selected", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "Home Page Selected", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
         } else if (id == R.id.web) {
             Intent i = new Intent(android.content.Intent.ACTION_VIEW,
                     Uri.parse("http://www.manuu.ac.in"));
