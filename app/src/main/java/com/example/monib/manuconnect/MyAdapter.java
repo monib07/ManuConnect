@@ -21,7 +21,6 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHoldder> {
 
 
-
     private List<DataObject> list;
     private Context context;
 
@@ -29,42 +28,65 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHoldder> {
         this.list = list;
         this.context = context;
     }
+
     @Override
     public ViewHoldder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_view_row,parent,false);
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.card_view_row, parent, false);
         return new ViewHoldder(v);
     }
 
     @Override
     public void onBindViewHolder(ViewHoldder holder, int position) {
 
-        DataObject dataObject=list.get(position);
+        DataObject dataObject = list.get(position);
         holder.title.setText(dataObject.getTitle());
         holder.desc.setText(dataObject.getDesciption());
-        holder.date.setText("Published Date: "+dataObject.getDate());
+        holder.date.setText("Published Date: " + dataObject.getDate());
 
     }
 
     @Override
-    public int getItemCount()
-    {
+    public int getItemCount() {
         return list.size();
     }
 
-    public class ViewHoldder extends RecyclerView.ViewHolder{
+    public class ViewHoldder extends RecyclerView.ViewHolder {
         public TextView title;
         public TextView desc;
         public TextView date;
 
         public ViewHoldder(View itemView) {
             super(itemView);
-            title=(TextView)itemView.findViewById(R.id.textView1);
-            desc=(TextView)itemView.findViewById(R.id.textView2);
-            date=(TextView)itemView.findViewById(R.id.textView3);
+            title = (TextView) itemView.findViewById(R.id.textView1);
+            desc = (TextView) itemView.findViewById(R.id.textView2);
+            date = (TextView) itemView.findViewById(R.id.textView3);
+            title.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Description();
+                        }
+                    }
+            );
+            desc.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Description();
+                        }
+                    }
+            );
+        }
+        public void Description() {
+            ViewGroup.LayoutParams params = desc.getLayoutParams();
+            params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            desc.setLayoutParams(params);
 
 
         }
-    }
 
+
+
+    }
 }

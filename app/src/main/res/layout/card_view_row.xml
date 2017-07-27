@@ -30,6 +30,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:text="Title"
+                android:onClick="Description"
                 android:layout_alignParentTop="true"
                 android:textStyle="bold"/>
             <TextView
@@ -37,8 +38,9 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:id="@+id/textView2"
+                android:onClick="Description"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_below="@+id/textView1"
                 android:layout_marginTop="5dp"/>
             <TextView
