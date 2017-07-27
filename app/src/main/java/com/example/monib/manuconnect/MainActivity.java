@@ -1,26 +1,19 @@
 package com.example.monib.manuconnect;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.view.menu.MenuView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -34,22 +27,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.OkHttpClient;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String URL_Data = "http://shortinfo.info/saifulData/Manuu_Script.php?id=";
+    private static String LOG_TAG = "MainActivity";
     private List<DataObject> results;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private LinearLayoutManager linearLayoutManager;
     private RecyclerView.LayoutManager mLayoutManager;
-    private static String LOG_TAG = "MainActivity";
-    private static final String URL_Data="http://shortinfo.info/saifulData/Manuu_Script.php?id=";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -188,6 +179,10 @@ public class MainActivity extends AppCompatActivity
             Intent i=new Intent(this,MainActivity.class);
             startActivity(i);
             //Toast.makeText(getApplicationContext(), "Home Page Selected", Toast.LENGTH_LONG).show();
+        } else if (id == R.id.web) {
+            Intent i = new Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse("http://www.manuu.ac.in"));
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -195,10 +190,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
-
-
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }
 
 
