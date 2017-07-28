@@ -3,6 +3,7 @@ package com.example.monib.manuconnect;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -189,7 +190,14 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "Job Selected", Toast.LENGTH_LONG).show();
         } else if (id == R.id.home_Page) {
             Toast.makeText(getApplicationContext(), "Home Page Selected", Toast.LENGTH_LONG).show();
+        } else if (id == R.id.web) {
+            String url = "http://www.manuu.ac.in/";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
+
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
