@@ -2,8 +2,8 @@ package com.example.monib.manuconnect;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -17,9 +17,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class ContactActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    String number = "04023006612";
     private GoogleMap mMap;
     private Button call;
-    String number="04023006612";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +32,14 @@ public class ContactActivity extends FragmentActivity implements OnMapReadyCallb
         mapFragment.getMapAsync(this);
         call=(Button)findViewById(R.id.bcall);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+    }
+
     public void Call(View v)
     {
         Intent i=new Intent(Intent.ACTION_DIAL);
