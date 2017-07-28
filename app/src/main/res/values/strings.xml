@@ -2,4 +2,10 @@
     <string name="app_name">Manuu Connect</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_contact">Map</string>
+    <string name="contactUs">Address:
+                             Weaker Section Colony,
+                             Telecom Nagar, Gachibowli,
+                             Hyderabad, Telangana 500032</string>
+
 </resources>
