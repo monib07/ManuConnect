@@ -5,11 +5,15 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.example.monib.manuconnect"
+        manifestPlaceholders = [onesignal_app_id: "c6093226-3ead-46c5-a2a1-04c6f0591120",
+                                // Project number pulled from dashboard, local value is ignored.
+                                onesignal_google_project_number: "540550268275"]
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -34,5 +38,13 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.1.1'
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.google.android.gms:play-services-maps:11.0.2'
+    compile 'com.google.android.gms:play-services-gcm:11.0.2'
+    compile 'com.google.android.gms:play-services-location:11.0.2'
+    compile 'com.google.android.gms:play-services-places:11.0.2'
     testCompile 'junit:junit:4.12'
+    compile 'com.google.firebase:firebase-core:11.0.2'                        // this line must be included to integrate with Firebase
+    compile 'com.google.firebase:firebase-messaging:11.0.2'
+
 }
+
+apply plugin: 'com.google.gms.google-services'

@@ -55,6 +55,14 @@ public class AboutUs extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_about_us, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -129,7 +137,7 @@ public class AboutUs extends AppCompatActivity {
                   History history=new History();
                   return history;
           }
-            return null;
+            return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
@@ -142,7 +150,7 @@ public class AboutUs extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "VC Page";
+                    return "VC Message";
                 case 1:
                     return "Overview";
                 case 2:

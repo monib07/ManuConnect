@@ -24,7 +24,7 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/contact_us"
+            android:layout_below="@+id/conView"
             tools:context="com.example.monib.manuconnect.ContactActivity" />
         <Button
             android:layout_width="match_parent"

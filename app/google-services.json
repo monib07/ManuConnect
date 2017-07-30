@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "24729172259",
+    "firebase_url": "https://manuu-b0f21.firebaseio.com",
+    "project_id": "manuu-b0f21",
+    "storage_bucket": "manuu-b0f21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24729172259:android:f88ca6c7ee55c64d",
+        "android_client_info": {
+          "package_name": "com.example.monib.manuconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24729172259-4d3fnfdi65dh57t6vn726nn32q93ppfk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.monib.manuconnect",
+            "certificate_hash": "56949514d80ffeb9616ab35d304bbbe16e07eaae"
+          }
+        },
+        {
+          "client_id": "24729172259-p0goq0aas0bc3sof6lrr2dokv5dgl948.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhMFuIiZJoke3q-rJsJStXJa8ys5Kh8dM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24729172259-p0goq0aas0bc3sof6lrr2dokv5dgl948.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
