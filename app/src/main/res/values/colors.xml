@@ -4,5 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorSky">#a7cdf2</color>
+    <color name="white">#fff</color>
+
+    <color name="main">#234226</color>
     <color name="ground">#bbdaa4</color>
 </resources>

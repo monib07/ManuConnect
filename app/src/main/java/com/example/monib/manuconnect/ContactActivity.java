@@ -1,6 +1,7 @@
 package com.example.monib.manuconnect;
 
 import android.content.Intent;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -64,8 +65,12 @@ public class ContactActivity extends FragmentActivity implements OnMapReadyCallb
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng sydney = new LatLng(17.425055, 78.364364);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("MANUU"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng manuu = new LatLng(17.425055, 78.364364);
+        mMap.addMarker(new MarkerOptions().position(manuu).title("MANUU"));
+        mMap.setMyLocationEnabled(true);
+
+
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(manuu,10));
     }
 }

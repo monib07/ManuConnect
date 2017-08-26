@@ -1,9 +1,14 @@
 package com.example.monib.manuconnect;
 
+import android.*;
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -36,13 +41,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private static final String URL_Data = "http://shortinfo.info/saifulData/Manuu_Script.php?id=";
+    private static final String URL_Data = "http://manuucoe.in/ums/index.php/api/GetNews?Start=0&Limit=10&Cat=Result";
     private static String LOG_TAG = "MainActivity";
     private List<DataObject> results;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private LinearLayoutManager linearLayoutManager;
     private RecyclerView.LayoutManager mLayoutManager;
+    private static final int Req_Perms=123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,17 +66,7 @@ public class MainActivity extends AppCompatActivity
         linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         results = new ArrayList<>();
-        loadData(0);
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-
-                if (linearLayoutManager.findLastCompletelyVisibleItemPosition() == results.size() - 1) {
-                    loadData(results.get(results.size() - 1).getId());
-                }
-
-            }
-        });
+        loadData();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -82,35 +78,26 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void loadData(final int id) {
+    private void loadData() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Load Data");
         progressDialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                URL_Data + id,
+                URL_Data ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
                         try {
                             progressDialog.dismiss();
                             JSONObject parent = new JSONObject(s);
-
-                            JSONArray NewsList = parent.getJSONArray("NewsList");
-
+                            JSONArray NewsList = parent.getJSONArray("News");
                             for (int i = 0; i < NewsList.length(); i++) {
-                                JSONObject c = NewsList.getJSONObject(i);
-                                int id = c.getInt("ID");
-                                String title = c.getString("Title");
-                                String desc = c.getString("Description");
-                                String date = c.getString("Date");
-                                DataObject dataObject = new DataObject(id, title, desc, date);
+                                JSONObject object=NewsList.getJSONObject(i);
+                                DataObject dataObject=new DataObject(object.getInt("Id"),object.getString("Title"),object.getString("RedirectUrl"),object.getString("AddedOn"));
                                 results.add(dataObject);
-
                             }
                             mAdapter = new MyAdapter(results, getApplicationContext());
                             mRecyclerView.setAdapter(mAdapter);
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -168,25 +155,56 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.notice_board) {
+        if (id == R.id.home)
+        {
             Toast.makeText(getApplicationContext(), "Notice Board Selected", Toast.LENGTH_LONG).show();
-            // Intent i = new Intent(getApplicationContext(), .class);
-            //startActivity(i);
-        } else if (id == R.id.contact_us) {
-            //  Toast.makeText(getApplicationContext(), "Contact Us Selected", Toast.LENGTH_LONG).show();
-            Intent i = new Intent(getApplicationContext(), ContactActivity.class);
-            startActivity(i);
-        } else if (id == R.id.result) {
+        }
+        else if (id == R.id.admission) {
             Toast.makeText(getApplicationContext(), "Result Selected", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.interior) {
-            Toast.makeText(getApplicationContext(), "Interior Selected", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.job) {
+        }
+        else if (id == R.id.employment) {
             Toast.makeText(getApplicationContext(), "Job Selected", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.home_Page) {
-            //Toast.makeText(getApplicationContext(), "Home Page Selected", Toast.LENGTH_LONG).show();
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        }
+        else if (id == R.id.result) {
+
+            Intent i = new Intent(getApplicationContext(), PostDetails.class);
+            i.putExtra("Link","http://manuucoe.in/ums/resultsheet");
             startActivity(i);
-        } else if (id == R.id.web) {
+        }
+        else if (id == R.id.courseStructure) {
+            Intent i = new Intent(getApplicationContext(), PostDetails.class);
+            i.putExtra("Link","http://manuucoe.in/ums/CourseCurriculum");
+            startActivity(i);
+        }
+        else if (id == R.id.ExamResult) {
+            Intent i = new Intent(getApplicationContext(), PostDetails.class);
+            i.putExtra("Link"," http://manuucoe.in/ums/ResultMarkSheets");
+            startActivity(i);
+        }
+        else if (id == R.id.studentLogin) {
+            Intent i = new Intent(getApplicationContext(), PostDetails.class);
+            i.putExtra("Link","http://manuucoe.in/ums/student/login");
+            startActivity(i);
+
+        }
+        else if (id == R.id.emplogin) {
+            Intent i = new Intent(getApplicationContext(), PostDetails.class);
+            i.putExtra("Link","http://manuucoe.in/ums/teacher/login");
+            startActivity(i);
+        }
+
+        else if (id == R.id.contact) {
+            if(hasPermission())
+            {
+                Intent i = new Intent(getApplicationContext(), ContactActivity.class);
+                startActivity(i);
+            }
+            else
+            {
+                RequestPermission();
+            }
+        }
+        else if (id == R.id.web) {
             //Toast.makeText(getApplicationContext(), "Home Page Selected", Toast.LENGTH_LONG).show();
             Intent i = new Intent(android.content.Intent.ACTION_VIEW,
                     Uri.parse("http://www.manuu.ac.in"));
@@ -196,6 +214,65 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    public boolean hasPermission()
+    {
+        int res=0;
+        String[] permission=new String[]{Manifest.permission.ACCESS_FINE_LOCATION};
+        for(String params:permission)
+
+        {
+            res=checkCallingOrSelfPermission(params);
+            if(!(res== PackageManager.PERMISSION_GRANTED))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void RequestPermission() {
+        String[] permission=new String[]{Manifest.permission.ACCESS_FINE_LOCATION};
+        if(Build.VERSION.SDK_INT>=23)
+        {
+            requestPermissions(permission,Req_Perms);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        boolean allowed=true;
+        switch (requestCode)
+        {
+            case Req_Perms:
+                for (int res:grantResults)
+                {
+                    allowed=allowed && (res==PackageManager.PERMISSION_GRANTED);
+                }
+                break;
+            default:
+                allowed=false;
+                break;
+        }
+        if(allowed)
+        {
+            Intent i = new Intent(getApplicationContext(), ContactActivity.class);
+            startActivity(i);
+        }
+        else
+        {
+            if(Build.VERSION.SDK_INT>=23)
+            {
+
+                if(shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION));
+                Toast.makeText(this,"Access Location Denied",Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+
+
+    }
+
 
     // This fires when a notification is opened by tapping on it or one is received while the app is running.
 

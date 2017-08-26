@@ -32,23 +32,10 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:lineSpacingExtra="5dp"
-                android:onClick="Description"
                 android:text="Title"
                 android:textColor="#000"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_below="@+id/textView1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:lineSpacingExtra="5dp"
-                android:onClick="Description"
-                android:text="Desc" />
-
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"

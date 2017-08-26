@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.example.monib.manuconnect"
-        manifestPlaceholders = [onesignal_app_id: "c6093226-3ead-46c5-a2a1-04c6f0591120",
+        manifestPlaceholders = [onesignal_app_id               : "c6093226-3ead-46c5-a2a1-04c6f0591120",
                                 // Project number pulled from dashboard, local value is ignored.
                                 onesignal_google_project_number: "540550268275"]
         minSdkVersion 21
@@ -28,6 +28,8 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    // this line must be included to integrate with Firebase
+
     compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.android.support:support-v4:25.1.1'
     compile 'com.android.support:design:25.1.1'
@@ -41,10 +43,10 @@ dependencies {
     compile 'com.google.android.gms:play-services-gcm:11.0.2'
     compile 'com.google.android.gms:play-services-location:11.0.2'
     compile 'com.google.android.gms:play-services-places:11.0.2'
-    testCompile 'junit:junit:4.12'
-    compile 'com.google.firebase:firebase-core:11.0.2'                        // this line must be included to integrate with Firebase
+    compile 'com.google.firebase:firebase-core:11.0.2'
     compile 'com.google.firebase:firebase-messaging:11.0.2'
-
+    testCompile 'junit:junit:4.12'
 }
+
 
 apply plugin: 'com.google.gms.google-services'

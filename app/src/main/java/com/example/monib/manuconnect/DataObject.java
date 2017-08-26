@@ -5,10 +5,9 @@ import static android.R.attr.id;
 
 public class DataObject {
 
-    public int getId;
-    private int Id;
+    public int Id;
     private String Title;
-    private String Desciption;
+    private static String Desciption;
     private  String Date;
 
 
@@ -22,6 +21,13 @@ public class DataObject {
         Date=date;
     }
 
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
 
     public String getTitle() {
         return Title;
@@ -31,7 +37,7 @@ public class DataObject {
         Title = title;
     }
 
-    public String getDesciption() {
+    public static String getDesciption() {
         return Desciption;
     }
 
@@ -39,15 +45,11 @@ public class DataObject {
         Desciption = desciption;
     }
 
-    public String  getDate() {
+    public String getDate() {
         return Date;
     }
 
     public void setDate(String date) {
         Date = date;
-    }
-
-    public int getId() {
-        return id;
     }
 }

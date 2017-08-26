@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/app_bar"
-
-
     android:layout_height="match_parent"
     tools:context="com.example.monib.manuconnect.MainActivity">
 
@@ -21,7 +19,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#234226"
+            android:background="@color/main"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>

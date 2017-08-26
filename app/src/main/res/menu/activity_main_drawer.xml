@@ -1,52 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <group >
-    <item android:title="Home"
-        android:icon="@drawable/ic_home"
+    <item
+        android:title="Home"
+        android:icon="@mipmap/home"
         android:id="@+id/home_Page">
     </item>
-    </group>
-    <group>
-        <item
-            android:id="@+id/notice_board"
-            android:icon="@drawable/ic_notice"
-            android:title="Notice Board">
-        </item>
-    </group>
-    <group>
-        <item
-            android:id="@+id/interior"
-            android:title="Interior 2017-18"
-            android:icon="@drawable/ic_information">
-        </item>
-    </group>
-    <group>
-        <item
-            android:id="@+id/result"
-            android:title="Results"
-            android:icon="@drawable/ic_result"></item>
-    </group>
-    <group>
-        <item
-            android:id="@+id/job"
-            android:title="Jobs"
-            android:icon="@drawable/ic_job"></item>
-</group>
-    <group>
-    <item android:title="Contact Us"
-        android:id="@+id/contact_us"
-        android:icon="@drawable/ic_contact_us">
+    <item
+        android:id="@+id/admission"
+        android:icon="@mipmap/school"
+        android:title="Admission 2017-18">
     </item>
-    </group>
-
-    <group>
-        <item android:title="Website"
-            android:id="@+id/web"
-            android:icon="@drawable/ic_action_web"
-          >
+    <item
+        android:id="@+id/employment"
+        android:title="Employment News"
+        android:icon="@mipmap/work">
+    </item>
+    <item
+        android:id="@+id/result"
+        android:title="Result Sheets"
+        android:icon="@mipmap/result_sheet"></item>
+    <item
+        android:id="@+id/courseStructure"
+        android:title="Course Structure"
+        android:icon="@mipmap/book"></item>
+    <item
+        android:title="Exam Results"
+        android:icon="@mipmap/exam_result"
+        android:id="@+id/ExamResult"
+        >
+    </item>
+    <item
+        android:title="Student LogIn"
+        android:id="@+id/studentLogin"
+        android:icon="@mipmap/student">
+    </item>
+    <item
+        android:title="Employee Login"
+        android:id="@+id/emplogin"
+        android:icon="@mipmap/employee">
         </item>
-    </group>
+    <item
+        android:title="Contact Us"
+        android:id="@+id/contact"
+        android:icon="@mipmap/contact">
+    </item>
 
-
+    <item
+        android:title="Website"
+        android:id="@+id/web"
+        android:icon="@mipmap/web">
+    </item>
 </menu>
