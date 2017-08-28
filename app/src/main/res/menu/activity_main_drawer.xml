@@ -3,7 +3,7 @@
     <item
         android:title="Home"
         android:icon="@mipmap/home"
-        android:id="@+id/home_Page">
+        android:id="@+id/home">
     </item>
     <item
         android:id="@+id/admission"

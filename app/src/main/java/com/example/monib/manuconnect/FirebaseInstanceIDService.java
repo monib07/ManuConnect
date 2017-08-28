@@ -28,7 +28,6 @@ public class FirebaseInstanceIDService extends FirebaseInstanceIdService {
     }
 
     private void registerToken(String token) {
-
         OkHttpClient client = new OkHttpClient();
         RequestBody body = new FormBody.Builder()
                 .add("Token",token)
